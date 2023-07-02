@@ -1,2 +1,12 @@
+NOTE: These results might NOT be accurate at all since the testing data is extremely small. 
+
 Difficulty: 60% (num_epochs = 100, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256)
-Worst Complexity: 60% (num_epochs = 250, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256). However, this result might not be accurate since the testing data is very small.
+Worst Complexity: 60% (num_epochs = 250, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256). 
+
+Complexity:60% (num_epochs = 250, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256) 
+
+Tag:33% (num_epochs = 500, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256) if we only count the tag with highest prob. 
+
+Tag: 63.3333% (num_epochs = 500, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256) if there is at least 1 correct prediction in the top 3 predictions. 
+
+Tag: 83.3333% (num_epochs = 500, batch_size = 32, dropout_rate = 0.2, embedding_dim = 256) if there is at least 1 correct prediction in the top 5 prediction. 
