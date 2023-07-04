@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config({ path: "./env/main.env" });
+
 const { connectDB } = require("./utils/db");
 
 process.on("uncaughtException", (err) => {
@@ -9,9 +12,6 @@ process.on("unhandledRejection", (err) => {
   console.error(err);
   process.exit(1);
 });
-
-const dotenv = require("dotenv");
-dotenv.config({ path: "./env/main.env" });
 
 let uri = process.env.DB_STRING;
 uri = uri.replace(/<password>/, process.env.DB_PASSWORD);

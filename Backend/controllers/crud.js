@@ -1,4 +1,28 @@
+const APIFeatures = require("../utils/apiFeatures");
 const { HandledError, catchAsync } = require("../utils/errorHandling");
+
+const getAllWithCondition = (Model) => {
+  return catchAsync(async (req, res, next) => {
+    const query = Model.find(req.body);
+    const features = new APIFeatures(query, req.query)
+      .sort()
+      .paginate()
+      .limitFields();
+
+    const docs = await features.query;
+
+    const modelName = Model.modelName.toLowerCase();
+    const pluralModelName = `${modelName}s`;
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        length: docs.length,
+        [pluralModelName]: docs,
+      },
+    });
+  });
+};
 
 const createOne = (Model) =>
   catchAsync(async (req, res, next) => {
@@ -30,7 +54,11 @@ const getAll = (Model) =>
 
 const getOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id);
+    let doc = req.doc;
+    if (!doc) {
+      doc = await Model.findById(req.params.id);
+    }
+
     const modelName = Model.modelName.toLowerCase();
 
     if (!doc) {
@@ -80,4 +108,11 @@ const deleteOne = (Model) =>
     });
   });
 
-module.exports = { createOne, getOne, getAll, updateOne, deleteOne };
+module.exports = {
+  createOne,
+  getOne,
+  getAll,
+  getAllWithCondition,
+  updateOne,
+  deleteOne,
+};
