@@ -39,23 +39,23 @@ with open('complexity_type_mapping.json', 'r') as json_file:
 with open('tag_type_mapping.json', 'r') as json_file:
     tag_type_mapping = json.load(json_file)
 
-# print("GETTING ALL AVAILABLE PROBLEMS FROM DATA")
-# dataset_csv = "data.csv"
-# data_frame = pd.read_csv(dataset_csv)
-# dataset_problems = data_frame["Problem"].tolist()
-# dataset_problem_links = data_frame["Link"].tolist()
-# dataset_problem_names = []
+print("GETTING ALL AVAILABLE PROBLEMS FROM DATA")
+dataset_csv = "data.csv"
+data_frame = pd.read_csv(dataset_csv)
+dataset_problems = data_frame["Problem"].tolist()
+dataset_problem_links = data_frame["Link"].tolist()
+dataset_problem_names = []
 # Because there are no problem names in the dataset so we need to generate it based on the link 
-# for link in dataset_problem_links:
-#     words = link.strip().split("/")
-#     current_word_index = -1 
-#     while words[current_word_index] == "description" or words[current_word_index] == "":
-#         current_word_index -= 1
+for link in dataset_problem_links:
+    words = link.strip().split("/")
+    current_word_index = -1 
+    while words[current_word_index] == "description" or words[current_word_index] == "":
+        current_word_index -= 1
     
-#     problem_name = words[current_word_index]
-#     problem_name = problem_name.replace("-", " ")
-#     problem_name = problem_name[0].upper() + problem_name[1:]
-#     dataset_problem_names.append(problem_name)
+    problem_name = words[current_word_index]
+    problem_name = problem_name.replace("-", " ")
+    problem_name = problem_name[0].upper() + problem_name[1:]
+    dataset_problem_names.append(problem_name)
 
 
 def tokenize_text(text, tokenizer):
@@ -92,14 +92,14 @@ def analyze_text(text):
     tokenized_text = tokenize_text(text, tokenizer)
     analyze_result = dict()
 
-    # print("COMPARE THE CURRENT PROBLEM TO OTHER PROBLEM")
-    # dataset_problems_comparision = [(dataset_problem_links[i], dataset_problem_names[i],compare_text(text, dataset_problem)) for i, dataset_problem in enumerate(dataset_problems)]
-    # sorted_dataset_problems_comparision = sorted(dataset_problems_comparision, key = lambda item: -item[2])
-    # top_similar_problems = sorted_dataset_problems_comparision[:NUMBER_OF_SIMILAR_PROBLEMS_RETURN]
-    # analyze_result["similar_problems"] = [{
-    #     "link": item[0],
-    #     "name": item[1]
-    # } for item in top_similar_problems]
+    print("COMPARE THE CURRENT PROBLEM TO OTHER PROBLEM")
+    dataset_problems_comparision = [(dataset_problem_links[i], dataset_problem_names[i],compare_text(text, dataset_problem)) for i, dataset_problem in enumerate(dataset_problems)]
+    sorted_dataset_problems_comparision = sorted(dataset_problems_comparision, key = lambda item: -item[2])
+    top_similar_problems = sorted_dataset_problems_comparision[:NUMBER_OF_SIMILAR_PROBLEMS_RETURN]
+    analyze_result["similar_problems"] = [{
+        "link": item[0],
+        "name": item[1]
+    } for item in top_similar_problems]
 
     print("ANALYZING THE DIFFICULTY")
     difficulty_probs = analyze_text_using_model(difficulty_model, list(difficulty_type_mapping.keys()), tokenized_text)
