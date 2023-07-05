@@ -1,7 +1,18 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model import analyze_text
+from dotenv import load_dotenv
+
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
+
+NODEJS_BACKEND_BASE_URL = os.getenv("NODEJS_BACKEND_BASE_URL")
+print(NODEJS_BACKEND_BASE_URL)
+CORS(app, origins=NODEJS_BACKEND_BASE_URL, methods='*')
+
 
 @app.route('/api/test/', methods=['GET'])
 def hello():

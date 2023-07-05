@@ -44,6 +44,8 @@ const handleJsonWebTokenError = (err) => {
 };
 
 const errorController = (err, req, res, next) => {
+  console.log(err);
+
   if (process.env.NODE_ENV === "DEBUG") {
     console.error(err.stack);
     console.log(err.name);

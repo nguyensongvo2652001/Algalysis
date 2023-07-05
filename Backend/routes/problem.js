@@ -17,13 +17,17 @@ router
     problemController.createProblemController
   );
 
-
-
 router
   .route("/:id")
   .get(
     problemMiddleware.validateIfUserIsAllowedToViewProblemMiddleware,
     problemController.getProblem
   );
+
+router.post(
+  "/:id/analyze",
+  problemMiddleware.validateIfUserIsAllowedToViewProblemMiddleware,
+  problemController.analyzeProblem
+);
 
 module.exports = router;
