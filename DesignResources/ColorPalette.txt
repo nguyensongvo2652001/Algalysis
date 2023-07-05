@@ -1,0 +1,10 @@
+https://coolors.co/272727-ff6c37-ffffff-424242-2979ff-4caf50-ff1744
+
+Primary color (background): #272727
+Secondary color (accent): #FF6C37
+Text color: #FFFFFF
+Border color: #424242
+Info color: #2979FF
+Success color: #4CAF50
+Error color: #FF1744
+

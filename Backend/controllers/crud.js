@@ -3,13 +3,21 @@ const { HandledError, catchAsync } = require("../utils/errorHandling");
 
 const getAllWithCondition = (Model) => {
   return catchAsync(async (req, res, next) => {
+    const totalNumberOfDocs = await Model.countDocuments(req.body);
     const query = Model.find(req.body);
+
+    if (!req.query.limit) {
+      req.query.limit = 10;
+    }
+
     const features = new APIFeatures(query, req.query)
       .sort()
       .paginate()
       .limitFields();
 
     const docs = await features.query;
+
+    const maxNumberOfPages = Math.ceil(totalNumberOfDocs / req.query.limit);
 
     const modelName = Model.modelName.toLowerCase();
     const pluralModelName = `${modelName}s`;
@@ -19,6 +27,7 @@ const getAllWithCondition = (Model) => {
       data: {
         length: docs.length,
         [pluralModelName]: docs,
+        maxNumberOfPages,
       },
     });
   });
