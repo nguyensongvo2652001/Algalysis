@@ -133,7 +133,7 @@ def analyze_text(text):
     sorted_tag_probs_tuple_list = sorted(tag_probs_tuple_list, key = lambda item: -item[1])
     top_highest_prob_tags = sorted_tag_probs_tuple_list[:NUMBER_OF_TAGS_RETURN] 
     analyze_result["tags"] = [{
-        "tag": item[0], 
+        "label": item[0], 
         "prob": float(item[1])
     } for item in top_highest_prob_tags]
 
@@ -143,5 +143,5 @@ def analyze_text(text):
 if __name__ == "__main__":
     problem = "given an array of integer nums and an integer target, return index of the two number such that they add up to target. you may assume that each input would have exactly one solution, and you may not use the same element twice. you can return the answer in any order."
 
-    result = analyze_text( problem)
+    result = analyze_text(problem)
     print(result)

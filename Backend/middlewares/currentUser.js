@@ -4,4 +4,12 @@ const prepareGetAllCreatedProblemMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { prepareGetAllCreatedProblemMiddleware };
+const prepareDeleteAllCreatedProblems = (req, res, next) => {
+  req.body.creator = req.user._id;
+  next();
+};
+
+module.exports = {
+  prepareGetAllCreatedProblemMiddleware,
+  prepareDeleteAllCreatedProblems,
+};

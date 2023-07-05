@@ -65,7 +65,13 @@ const getOne = (Model) =>
   catchAsync(async (req, res, next) => {
     let doc = req.doc;
     if (!doc) {
-      doc = await Model.findById(req.params.id);
+      let query = Model.findById(req.params.id);
+
+      req.populateOptions.map((populateOption) => {
+        query = query.populate(populateOption);
+      });
+
+      doc = await query;
     }
 
     const modelName = Model.modelName.toLowerCase();
@@ -111,11 +117,22 @@ const deleteOne = (Model) =>
       return next(new HandledError(`No ${modelName} found with that id`, 404));
     }
 
-    res.status(204).json({
+    res.status(200).json({
       status: "success",
       data: null,
     });
   });
+
+const deleteAll = (Model) => {
+  return catchAsync(async (req, res, next) => {
+    const docs = await Model.deleteMany(req.body);
+    const modelName = Model.modelName.toLowerCase();
+    res.status(200).json({
+      status: "success",
+      data: null,
+    });
+  });
+};
 
 module.exports = {
   createOne,
@@ -124,4 +141,5 @@ module.exports = {
   getAllWithCondition,
   updateOne,
   deleteOne,
+  deleteAll,
 };

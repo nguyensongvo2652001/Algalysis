@@ -71,7 +71,9 @@ const validateProblemRequestBodyMiddleware = catchAsync(
 
 const validateIfUserIsAllowedToViewProblemMiddleware = catchAsync(
   async (req, res, next) => {
-    const problem = await Problem.findById(req.params.id);
+    const problem = await Problem.findById(req.params.id).populate({
+      path: "analyzeResult",
+    });
 
     if (!problem) {
       return next(

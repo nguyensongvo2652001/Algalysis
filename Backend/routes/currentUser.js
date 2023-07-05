@@ -10,11 +10,16 @@ const router = express.Router();
 
 router.use(authMiddleware.checkAuthenticationMiddleware);
 
-router.get(
-  "/problem",
-  currentUserMiddleware.prepareGetAllCreatedProblemMiddleware,
-  problemController.getAllWithConditionProblemController
-);
+router
+  .route("/problem")
+  .get(
+    currentUserMiddleware.prepareGetAllCreatedProblemMiddleware,
+    problemController.getAllWithConditionProblemController
+  )
+  .delete(
+    currentUserMiddleware.prepareDeleteAllCreatedProblems,
+    problemController.deleteAllProblems
+  );
 
 router.get(
   "/problem/search",
