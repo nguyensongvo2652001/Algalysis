@@ -7,7 +7,7 @@
 
 .authenticationForm__backgroundContainer {
   width: 40%;
-  max-height: 100%;
+  height: 100vh;
 }
 
 .authenticationForm__form {
@@ -125,4 +125,8 @@
 .authenticationForm__infoTextLink:hover,
 .authenticationForm__infoTextLink:active {
   color: var(--info-color-darker);
+}
+
+.authenticationForm__loadingSpinnerContainer {
+  width: 60%;
 }

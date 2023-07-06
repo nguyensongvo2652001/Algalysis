@@ -1,12 +1,69 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./AuthenticationForm.module.css";
 
 import authFormBackground from "../../../assets/authFormBackground.jpg";
 import logo from "../../../assets/WhiteLogo.png";
+import { useRef, useState } from "react";
+import useSendRequest from "../../../hooks/useSendRequest";
+import useErrorHandling from "../../../hooks/useErrorHandling";
+import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
+import { successAlert } from "../../../utils/alert";
 
 const AuthenticationForm = (props) => {
-  const { formTitle, submitButtonText, infoTextOptions } = props;
+  const {
+    formTitle,
+    submitButtonText,
+    infoTextOptions,
+    submitURL,
+    successText,
+  } = props;
+
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const { sendRequest } = useSendRequest();
+  const { handleError } = useErrorHandling();
+
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  const submitButtonClickHandler = async (event) => {
+    event.preventDefault();
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
+    setIsLoading(true);
+    try {
+      if (!email) {
+        throw new Error("Email can not be empty");
+      }
+
+      if (!password) {
+        throw new Error("Password can not be empty");
+      }
+      console.log(email, password);
+      const data = { email, password };
+      const response = await sendRequest(submitURL, {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
+
+      const content = await response.json();
+
+      if (content.status !== "success") {
+        throw new Error(content.message);
+      }
+
+      setIsLoading(false);
+      successAlert(successText);
+
+      setTimeout(() => {
+        navigate("/problems");
+      }, 2000);
+    } catch (err) {
+      handleError(err);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div className={classes.authenticationForm__container}>
@@ -37,29 +94,48 @@ const AuthenticationForm = (props) => {
                 type="email"
                 id="email"
                 placeholder="yourEmail@example.com"
+                ref={emailInputRef}
               />
             </li>
 
             <li className={classes.authenticationForm__formControlGroup}>
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" placeholder="●●●●●●●●" />
+              <input
+                type="password"
+                id="password"
+                placeholder="●●●●●●●●"
+                ref={passwordInputRef}
+              />
             </li>
           </ul>
 
-          <footer className={classes.authenticationForm__footer}>
-            <button className={classes.authenticationForm__submitButton}>
-              {submitButtonText}
-            </button>
-            <p className={classes.authenticationForm__infoText}>
-              {infoTextOptions.question} &nbsp;
-              <Link
-                className={classes.authenticationForm__infoTextLink}
-                to={infoTextOptions.link}
+          {!isLoading && (
+            <footer className={classes.authenticationForm__footer}>
+              <button
+                className={classes.authenticationForm__submitButton}
+                onClick={submitButtonClickHandler}
               >
-                {infoTextOptions.linkText}
-              </Link>
-            </p>
-          </footer>
+                {submitButtonText}
+              </button>
+              <p className={classes.authenticationForm__infoText}>
+                {infoTextOptions.question} &nbsp;
+                <Link
+                  className={classes.authenticationForm__infoTextLink}
+                  to={infoTextOptions.link}
+                >
+                  {infoTextOptions.linkText}
+                </Link>
+              </p>
+            </footer>
+          )}
+
+          {isLoading && (
+            <div
+              className={classes.authenticationForm__loadingSpinnerContainer}
+            >
+              <LoadingSpinner />
+            </div>
+          )}
         </div>
       </form>
     </div>
