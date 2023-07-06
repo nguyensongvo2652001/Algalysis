@@ -1,3 +1,7 @@
+:root {
+  --content-width: 60%;
+}
+
 .authenticationForm__container {
   display: flex;
   max-height: 100vh;
@@ -64,7 +68,7 @@
 }
 
 .authenticationForm__formControlGroup input {
-  width: 60%;
+  width: var(--content-width);
   font-family: inherit;
   font-size: 1.6rem;
   color: var(--text-color);
@@ -88,7 +92,7 @@
 
 .authenticationForm__footer {
   display: flex;
-  width: 60%;
+  width: var(--content-width);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -128,5 +132,41 @@
 }
 
 .authenticationForm__loadingSpinnerContainer {
-  width: 60%;
+  width: var(--content-width);
+}
+
+@media (max-width: 1050px) {
+  :root {
+    --content-width: 80%;
+  }
+}
+
+@media (max-width: 900px) {
+  .authenticationForm__formLogo {
+    width: 30rem;
+  }
+
+  .authenticationForm__formTitle {
+    font-size: 3.6rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .authenticationForm__backgroundContainer {
+    width: 45%;
+  }
+
+  .authenticationForm__form {
+    width: 55%;
+  }
+}
+
+@media (max-width: 750px) {
+  .authenticationForm__backgroundContainer {
+    width: 0%;
+  }
+
+  .authenticationForm__form {
+    width: 100%;
+  }
 }
