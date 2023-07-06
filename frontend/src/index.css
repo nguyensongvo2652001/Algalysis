@@ -9,6 +9,8 @@
   --info-color: #2979ff;
   --info-color-darker: #2161cc;
   --border-radius: 10px;
+  --alert-color: #ff1744;
+  --alert-color-darker: #cc1236;
 }
 
 * {

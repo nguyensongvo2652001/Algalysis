@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+
+.navbar__mainItems {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  width: 30rem;
+}
+
+.navbar__logOutButton {
+  background-color: var(--alert-color);
+  font-family: inherit;
+  border-radius: var(--border-radius);
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.navbar__logOutButton:hover {
+  background-color: var(--alert-color-darker);
+}

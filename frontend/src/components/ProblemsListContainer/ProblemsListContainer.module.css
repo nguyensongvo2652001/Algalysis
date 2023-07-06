@@ -1,0 +1,15 @@
+.problemsListContainer {
+  background-color: var(--primary-color);
+  min-height: 100vh;
+  padding: 4rem;
+}
+
+.problemsListContainer__welcomeMessage {
+  font-size: 5.2rem;
+  color: var(--text-color);
+  margin-bottom: 1.2rem;
+}
+
+.problemsListContainer__welcomeMessage span {
+  color: var(--secondary-color);
+}

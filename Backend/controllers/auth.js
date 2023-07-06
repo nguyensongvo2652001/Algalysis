@@ -7,14 +7,18 @@ const sendAuthResponse = (res, { user, statusCode, message }) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
+  const cookieExpirationTimeInMiliseconds =
+    Number(process.env.JWT_EXPIRES_IN_SECONDS) * 1000;
   res.cookie("token", token, {
     httpOnly: true,
-    maxAge: Number(process.env.JWT_EXPIRES_IN_SECONDS) * 1000,
-    secure: process.env.NODE_ENV === "production",
+    maxAge: cookieExpirationTimeInMiliseconds,
+    secure: true,
+    sameSite: "none",
   });
 
   user.password = undefined;
   res.status(statusCode).json({
+    status: "success",
     data: {
       message,
       user,

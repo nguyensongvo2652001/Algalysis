@@ -1,0 +1,16 @@
+.myLink:link,
+.myLink:visited {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 2rem;
+}
+
+.myLink.myLink--inactive {
+  color: var(--input-placeholder-color);
+}
+
+.myLink--inactive:hover,
+.myLink--inactive:active {
+  color: var(--info-color);
+}

@@ -1,0 +1,31 @@
+.searchBar__container {
+  width: 75%;
+  position: relative;
+}
+
+.searchBar__input {
+  background-color: var(--input-background-color);
+  font-family: inherit;
+  width: 100%;
+  padding: 2rem 2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.6rem;
+  color: var(--text-color);
+}
+
+.searchBar__input::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.searchBar__input:focus {
+  outline: none;
+}
+
+.searchBar__container ion-icon {
+  color: var(--text-color);
+  font-size: 2.4rem;
+  position: absolute;
+  top: 30%;
+  left: 95%;
+}
