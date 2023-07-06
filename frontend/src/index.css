@@ -1,0 +1,49 @@
+:root {
+  --primary-color: #232323;
+  --secondary-color: #ff6c37;
+  --secondary-color-darker: #cc562c;
+  --text-color: #fff;
+  --dark-text-color: #ccc;
+  --input-background-color: #3a3a3a;
+  --input-placeholder-color: #888;
+  --info-color: #2979ff;
+  --info-color-darker: #2161cc;
+  --border-radius: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  font-family: "Urbanist", sans-serif;
+  position: relative;
+}
+
+/* Mobile (up to 480px) */
+@media (max-width: 480px) {
+  /* CSS rules specific to small mobile devices in portrait orientation */
+  /* ... */
+}
+
+/* Mobile (481px to 767px) */
+@media (max-width: 767px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/* Tablets (992px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* CSS rules specific to tablets in both portrait and landscape orientations */
+  /* ... */
+  html {
+    font-size: 60%;
+  }
+}

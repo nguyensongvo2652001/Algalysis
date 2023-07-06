@@ -1,0 +1,128 @@
+.authenticationForm__container {
+  display: flex;
+  max-height: 100vh;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.authenticationForm__backgroundContainer {
+  width: 40%;
+  max-height: 100%;
+}
+
+.authenticationForm__form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 9rem;
+}
+
+.authenticationForm__background {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.authenticationForm__formLogoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.authenticationForm__formLogo {
+  width: 36rem;
+  margin-bottom: 3.2rem;
+}
+
+.authenticationForm__formContent {
+  padding-left: 20%;
+}
+
+.authenticationForm__formTitle {
+  color: var(--text-color);
+  font-size: 4.4rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.authenticationForm__formControlGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.authenticationForm__formControlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.authenticationForm__formControlGroup label {
+  color: var(--dark-text-color);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.authenticationForm__formControlGroup input {
+  width: 60%;
+  font-family: inherit;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background-color: var(--input-background-color);
+  border: none;
+  padding: 2rem 2rem;
+  border-radius: var(--border-radius);
+}
+
+.authenticationForm__formControlGroup input::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.authenticationForm__formControlGroup input:focus {
+  outline: none;
+}
+
+.authenticationForm__formControlGroup input[type="password"] {
+  font-family: caption;
+}
+
+.authenticationForm__footer {
+  display: flex;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.authenticationForm__submitButton {
+  font-family: inherit;
+  font-size: 1.8rem;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 50%;
+}
+
+.authenticationForm__submitButton:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.authenticationForm__infoText {
+  color: var(--text-color);
+  font-size: 1.4rem;
+}
+
+.authenticationForm__infoTextLink:link,
+.authenticationForm__infoTextLink:visited {
+  color: var(--info-color);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.authenticationForm__infoTextLink:hover,
+.authenticationForm__infoTextLink:active {
+  color: var(--info-color-darker);
+}
