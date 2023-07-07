@@ -5,6 +5,7 @@ import classes from "./ProblemsListContainer.module.css";
 import ProblemsTable from "./ProblemsTable/ProblemsTable";
 import PageNavigator from "../PageNavigator/PageNavigator";
 import RequiredLoginComponent from "../RequiredLoginComponent/RequiredLoginComponent";
+import Modal from "../UI/Modal/Modal";
 
 const ProblemsListContainer = () => {
   const params = useParams();

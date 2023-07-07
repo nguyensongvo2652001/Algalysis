@@ -11,6 +11,8 @@
   --border-radius: 10px;
   --alert-color: #ff1744;
   --alert-color-darker: #cc1236;
+  --success-color: #4caf50;
+  --success-color-darker: #3d8c40;
 
   --name-column-width: 35%;
   --date-created-column-width: 15%;
@@ -18,6 +20,8 @@
   --complexity-column-width: 15%;
   --tag-column-width: 9%;
   --delete-all-button-width: 8%;
+
+  --shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 * {

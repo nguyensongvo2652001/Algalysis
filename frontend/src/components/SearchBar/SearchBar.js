@@ -6,6 +6,9 @@ const SearchBar = () => {
       <input
         className={classes.searchBar__input}
         placeholder="Search for problems"
+        onChange={(e) => {
+          e.currentTarget.value = e.currentTarget.value.toLowerCase();
+        }}
       />
       <ion-icon
         name="search-outline"
