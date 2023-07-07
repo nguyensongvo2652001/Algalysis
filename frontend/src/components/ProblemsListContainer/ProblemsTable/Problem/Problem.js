@@ -7,7 +7,7 @@ const Problem = () => {
     <li className={classes.problem}>
       <div className={classes.problem__nameContainer}>
         <MyLink
-          text="The palindrome problem"
+          text="The palindrome problem The palindrome problem The palindrome problem The palindrome problem The palindrome problem The palindrome problem"
           to="/problems/123"
           className={classes.problem__nameValue}
         />

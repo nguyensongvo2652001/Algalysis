@@ -30,3 +30,20 @@
   top: 30%;
   left: 95%;
 }
+
+@media (max-width: 850px) {
+  .searchBar__container {
+    width: 85%;
+  }
+
+  .searchBar__input {
+    font-size: 1.4rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .searchBar__container ion-icon {
+    font-size: 2rem;
+    top: 25%;
+    left: 93%;
+  }
+}

@@ -1,7 +1,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.4rem;
+  margin-bottom: 4.8rem;
+  list-style: none;
+  align-items: center;
 }
 
 .navbar__mainItems {
@@ -26,4 +28,16 @@
 
 .navbar__logOutButton:hover {
   background-color: var(--alert-color-darker);
+}
+
+@media (max-width: 1000px) {
+  .navbar__logo {
+    width: 24rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar__logo {
+    width: 20rem;
+  }
 }

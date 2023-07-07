@@ -47,3 +47,75 @@
 .problemsTableHeader__deleteAllButton:hover {
   background-color: var(--alert-color-darker);
 }
+
+@media (max-width: 1500px) {
+  .problemsTableHeader__deleteAllButton {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 1250px) {
+  :root {
+    --name-column-width: 30%;
+    --tag-column-width: 12%;
+    --delete-all-button-width: 10%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .problemsTableHeader,
+  .problemsTableHeader__deleteAllButton {
+    font-size: 1.4rem;
+  }
+
+  :root {
+    --complexity-column-width: 10%;
+    --tag-column-width: 14%;
+    --delete-all-button-width: 13%;
+  }
+}
+
+@media (max-width: 850px) {
+  :root {
+    --name-column-width: 28%;
+    --complexity-column-width: 12%;
+  }
+}
+
+@media (max-width: 700px) {
+  .problemsTableHeader__dateCreatedColumn {
+    display: none;
+  }
+
+  :root {
+    --date-created-column-width: 0%;
+    --name-column-width: 30%;
+    --difficulty-column-width: 17%;
+    --complexity-column-width: 16%;
+    --tag-column-width: 20%;
+    --delete-all-button-width: 17%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --date-created-column-width: 0%;
+    --name-column-width: 82%;
+    --difficulty-column-width: 0%;
+    --complexity-column-width: 0%;
+    --tag-column-width: 0%;
+    --delete-all-button-width: 19%;
+  }
+
+  .problemsTableHeader__complexityColumn {
+    display: none;
+  }
+
+  .problemsTableHeader__difficultyColumn {
+    display: none;
+  }
+
+  .problemsTableHeader__tagColumn {
+    display: none;
+  }
+}

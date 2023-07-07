@@ -16,7 +16,7 @@ const MyLink = (props) => {
 
   return (
     <Link className={allClasses} to={to}>
-      {text}
+      <p>{text}</p>
     </Link>
   );
 };
