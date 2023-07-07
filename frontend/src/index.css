@@ -11,6 +11,13 @@
   --border-radius: 10px;
   --alert-color: #ff1744;
   --alert-color-darker: #cc1236;
+
+  --name-column-width: 35%;
+  --date-created-column-width: 15%;
+  --difficulty-column-width: 15%;
+  --complexity-column-width: 15%;
+  --tag-column-width: 9%;
+  --delete-all-button-width: 8%;
 }
 
 * {

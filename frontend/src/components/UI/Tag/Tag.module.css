@@ -1,0 +1,13 @@
+.tag {
+  border-radius: var(--border-radius);
+  width: fit-content;
+  padding: 1rem 2rem;
+}
+
+.tag--hard {
+  background-color: var(--alert-color);
+}
+
+.tag--hashmap {
+  background-color: var(--secondary-color);
+}

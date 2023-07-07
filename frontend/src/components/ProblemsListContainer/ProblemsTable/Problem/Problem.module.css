@@ -1,0 +1,54 @@
+.problem {
+  width: 100%;
+  background-color: var(--input-background-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  padding: 2rem;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  align-items: center;
+}
+
+.problem__nameContainer {
+  width: var(--name-column-width);
+}
+
+.problem__nameValue:link,
+.problem__nameValue:visited {
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+.problem__nameValue:hover,
+.problem__nameValue:active {
+  color: var(--info-color);
+}
+
+.problem__dateCreatedContainer {
+  width: var(--date-created-column-width);
+}
+
+.problem__difficultyContainer {
+  width: var(--difficulty-column-width);
+}
+
+.problem__complexityContainer {
+  width: var(--complexity-column-width);
+  font-family: "Merriweather", serif;
+  font-style: italic;
+}
+
+.problem__tagContainer {
+  width: var(--tag-column-width);
+}
+
+.problem__trashIconContainer {
+  width: var(--delete-all-button-width);
+  text-align: center;
+}
+
+.problem__trashIconContainer ion-icon {
+  font-size: 2.4rem;
+  color: var(--alert-color);
+  cursor: pointer;
+}

@@ -1,0 +1,6 @@
+.problemList {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 1.2rem;
+}

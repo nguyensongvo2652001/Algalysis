@@ -1,0 +1,30 @@
+.pageNavigator {
+  display: flex;
+  color: var(--text-color);
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.pageNavigator__activePage {
+  width: 5rem;
+  height: 4rem;
+  background-color: var(--secondary-color);
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+
+.pageNavigator_button {
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  background-color: var(--input-background-color);
+  border: none;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}

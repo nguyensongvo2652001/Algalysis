@@ -1,6 +1,7 @@
 .searchBar__container {
   width: 75%;
   position: relative;
+  margin-bottom: 3.2rem;
 }
 
 .searchBar__input {

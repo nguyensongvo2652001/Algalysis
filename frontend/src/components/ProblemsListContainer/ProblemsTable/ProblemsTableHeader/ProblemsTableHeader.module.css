@@ -1,0 +1,49 @@
+.problemsTableHeader {
+  color: var(--dark-text-color);
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  padding: 0 2rem;
+  width: 100%;
+  margin-bottom: 1.6rem;
+}
+
+.problemsTableHeader__nameColumn {
+  width: var(--name-column-width);
+}
+
+.problemsTableHeader__dateCreatedColumn {
+  width: var(--date-created-column-width);
+}
+
+.problemsTableHeader__difficultyColumn {
+  width: var(--difficulty-column-width);
+}
+
+.problemsTableHeader__complexityColumn {
+  width: var(--complexity-column-width);
+}
+
+.problemsTableHeader__tagColumn {
+  width: var(--tag-column-width);
+}
+
+.problemsTableHeader__deleteAllButtonContainer {
+  width: var(--delete-all-button-width);
+}
+
+.problemsTableHeader__deleteAllButton {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 1.6rem;
+  background-color: var(--alert-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.problemsTableHeader__deleteAllButton:hover {
+  background-color: var(--alert-color-darker);
+}

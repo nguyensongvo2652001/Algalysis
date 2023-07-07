@@ -1,11 +1,16 @@
 import Tag from "../../../UI/Tag/Tag";
+import MyLink from "../../../MyLink/MyLink";
 import classes from "./Problem.module.css";
 
 const Problem = () => {
   return (
     <li className={classes.problem}>
       <div className={classes.problem__nameContainer}>
-        <p className={classes.problem__nameValue}>The palindrome problem</p>
+        <MyLink
+          text="The palindrome problem"
+          to="/problems/123"
+          className={classes.problem__nameValue}
+        />
       </div>
 
       <div className={classes.problem__dateCreatedContainer}>
@@ -21,7 +26,7 @@ const Problem = () => {
       </div>
 
       <div className={classes.problem__tagContainer}>
-        <Tag value="Hashmap" />
+        <Tag value="hashmap" />
       </div>
 
       <div className={classes.problem__trashIconContainer}>
