@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const { catchAsync, HandledError } = require("../utils/errorHandling");
+const authMiddleware = require("../middlewares/auth");
 
 const sendAuthResponse = (res, { user, statusCode, message }) => {
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
@@ -26,6 +27,16 @@ const sendAuthResponse = (res, { user, statusCode, message }) => {
     },
   });
 };
+
+const checkAuthentication = catchAsync(async (req, res, next) => {
+  const user = await authMiddleware.getAndValidateToken(req);
+
+  user.password = undefined;
+  res.status(200).json({
+    status: "success",
+    data: { user },
+  });
+});
 
 const signUp = catchAsync(async (req, res, next) => {
   // const { email, password } = req.body;
@@ -66,8 +77,15 @@ const login = catchAsync(async (req, res, next) => {
 });
 
 const logout = (req, res) => {
-  res.cookie("token", "", { maxAge: 10 });
+  res.cookie("token", "", {
+    maxAge: 0,
+    expires: new Date(0),
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.status(200).json({
+    status: "success",
     message: "log out successfully",
   });
 };
@@ -76,4 +94,5 @@ module.exports = {
   signUp,
   login,
   logout,
+  checkAuthentication,
 };

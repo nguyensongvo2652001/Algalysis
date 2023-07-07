@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const { HandledError, catchAsync } = require("../utils/errorHandling");
 
-const checkAuthenticationMiddleware = catchAsync(async (req, res, next) => {
+const getAndValidateToken = async (req) => {
   let token;
   if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
@@ -14,23 +14,28 @@ const checkAuthenticationMiddleware = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(
-      new HandledError("you are not logged in, please log in first", 401)
-    );
+    throw new HandledError("you are not logged in, please log in first", 401);
   }
 
   const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
   const user = await User.findById(decodedToken.userId);
   if (!user) {
-    return next(
-      new HandledError("the user belonged to this token no longer exists", 401)
+    throw new HandledError(
+      "the user belonged to this token no longer exists",
+      401
     );
   }
+
+  return user;
+};
+
+const checkAuthenticationMiddleware = catchAsync(async (req, res, next) => {
+  const user = await getAndValidateToken(req);
 
   req.user = user;
 
   next();
 });
 
-module.exports = { checkAuthenticationMiddleware };
+module.exports = { checkAuthenticationMiddleware, getAndValidateToken };

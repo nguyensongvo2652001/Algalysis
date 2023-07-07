@@ -4,6 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import classes from "./ProblemsListContainer.module.css";
 import ProblemsTable from "./ProblemsTable/ProblemsTable";
 import PageNavigator from "../PageNavigator/PageNavigator";
+import RequiredLoginComponent from "../RequiredLoginComponent/RequiredLoginComponent";
 
 const ProblemsListContainer = () => {
   const params = useParams();
@@ -21,23 +22,25 @@ const ProblemsListContainer = () => {
   };
 
   return (
-    <div className={classes.problemsListContainer}>
-      <Navbar />
-      <p className={classes.problemsListContainer__welcomeMessage}>
-        Welcome back <span>someUsername</span>
-      </p>
-      <SearchBar />
-      <ProblemsTable />
-      <div className={classes.problemsListContainer__pageNavigatorContainer}>
-        <PageNavigator
-          minPage={1}
-          maxPage={10}
-          currentActivePage={currentPage}
-          previousPageButtonClickHandler={previousPageButtonClickHandler}
-          nextPageButtonClickHandler={nextPageButtonClickHandler}
-        />
+    <RequiredLoginComponent>
+      <div className={classes.problemsListContainer}>
+        <Navbar />
+        <p className={classes.problemsListContainer__welcomeMessage}>
+          Welcome back <span>someUsername</span>
+        </p>
+        <SearchBar />
+        <ProblemsTable />
+        <div className={classes.problemsListContainer__pageNavigatorContainer}>
+          <PageNavigator
+            minPage={1}
+            maxPage={10}
+            currentActivePage={currentPage}
+            previousPageButtonClickHandler={previousPageButtonClickHandler}
+            nextPageButtonClickHandler={nextPageButtonClickHandler}
+          />
+        </div>
       </div>
-    </div>
+    </RequiredLoginComponent>
   );
 };
 
