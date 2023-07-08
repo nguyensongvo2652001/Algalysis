@@ -1,7 +1,7 @@
 .problemsListContainer {
   background-color: var(--primary-color);
   min-height: 100vh;
-  padding: 4rem;
+  padding: var(--main-container-padding);
   position: relative;
 }
 

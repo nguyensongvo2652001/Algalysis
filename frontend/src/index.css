@@ -15,6 +15,8 @@
   --success-color-darker: #3d8c40;
   --light-yellow-color: #ffc947;
   --dark-yellow-color: #f3b333;
+  --border-color: #424242;
+  --tag-prob-bar-background-color: rgba(216, 216, 216, 0.1);
 
   --name-column-width: 35%;
   --date-created-column-width: 15%;
@@ -24,6 +26,8 @@
   --delete-all-button-width: 8%;
 
   --shadow-color: rgba(0, 0, 0, 0.6);
+
+  --main-container-padding: 4rem;
 }
 
 * {

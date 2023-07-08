@@ -1,0 +1,27 @@
+.tag {
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 1.6rem;
+  border-radius: var(--border-radius);
+  border: 3px solid var(--border-color);
+  width: 80%;
+  height: 5rem;
+  position: relative;
+}
+
+.tag__label {
+  z-index: 1;
+}
+
+.tag__probBar {
+  background-color: var(--tag-prob-bar-background-color);
+  height: 100%;
+  display: inline-block;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 0;
+  left: 0;
+}

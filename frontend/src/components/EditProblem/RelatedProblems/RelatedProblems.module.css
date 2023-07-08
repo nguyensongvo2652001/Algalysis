@@ -1,0 +1,13 @@
+.relatedProblems__title {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.relatedProblems__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}

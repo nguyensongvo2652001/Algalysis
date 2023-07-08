@@ -1,7 +1,9 @@
 .tag {
   border-radius: var(--border-radius);
   width: fit-content;
-  padding: 1rem 2rem;
+  padding: 0.5rem 3rem;
+  color: var(--text-color);
+  font-size: 1.4rem;
 }
 
 .tag--easy {
