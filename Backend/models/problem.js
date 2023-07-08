@@ -11,6 +11,9 @@ const problemSchema = new mongoose.Schema({
   text: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   analyzeResult: {
     type: mongoose.Types.ObjectId,
     ref: "ProblemAnalyzeResult",

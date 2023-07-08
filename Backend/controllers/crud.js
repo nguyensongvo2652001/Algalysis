@@ -17,7 +17,10 @@ const getAllWithCondition = (Model) => {
 
     const docs = await features.query;
 
-    const maxNumberOfPages = Math.ceil(totalNumberOfDocs / req.query.limit);
+    const maxNumberOfPages = Math.max(
+      Math.ceil(totalNumberOfDocs / req.query.limit),
+      1
+    );
 
     const modelName = Model.modelName.toLowerCase();
     const pluralModelName = `${modelName}s`;

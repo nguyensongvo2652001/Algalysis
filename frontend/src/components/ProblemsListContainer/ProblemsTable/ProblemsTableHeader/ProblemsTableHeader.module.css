@@ -69,7 +69,10 @@
   }
 
   :root {
-    --complexity-column-width: 10%;
+    --name-column-width: 30%;
+    --date-created-column-width: 15%;
+    --difficulty-column-width: 12%;
+    --complexity-column-width: 17%;
     --tag-column-width: 14%;
     --delete-all-button-width: 13%;
   }
@@ -82,7 +85,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .problemsTableHeader__dateCreatedColumn {
     display: none;
   }

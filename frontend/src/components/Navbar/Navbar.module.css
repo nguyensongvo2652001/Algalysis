@@ -15,8 +15,12 @@
   width: 30rem;
 }
 
-.navbar__logOutButton {
-  background-color: var(--alert-color);
+.navbar__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.navbar__buttons button {
   font-family: inherit;
   border-radius: var(--border-radius);
   padding: 1rem 3rem;
@@ -26,8 +30,20 @@
   transition: all 0.3s;
 }
 
+.navbar__logOutButton {
+  background-color: var(--alert-color);
+}
+
 .navbar__logOutButton:hover {
   background-color: var(--alert-color-darker);
+}
+
+.navbar__newProblemButton {
+  background-color: var(--secondary-color);
+}
+
+.navbar__newProblemButton:hover {
+  background-color: var(--secondary-color-darker);
 }
 
 @media (max-width: 1000px) {
@@ -36,8 +52,24 @@
   }
 }
 
+@media (max-width: 700px) {
+  .navbar__buttons button {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+  }
+
+  .navbar__link {
+    font-size: 1.6rem !important;
+  }
+}
+
 @media (max-width: 600px) {
   .navbar__logo {
     width: 20rem;
+  }
+
+  .navbar__buttons button {
+    font-size: 1.4rem;
+    padding: 1rem;
   }
 }

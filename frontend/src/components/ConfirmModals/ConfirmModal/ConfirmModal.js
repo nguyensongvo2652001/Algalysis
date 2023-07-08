@@ -15,6 +15,7 @@ const ConfirmModal = (props) => {
     try {
       setIsConfirming(true);
       await confirmFunction();
+      closeModal();
     } catch (err) {
       handleError(err);
     }

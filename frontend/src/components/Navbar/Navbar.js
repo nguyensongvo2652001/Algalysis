@@ -61,18 +61,30 @@ const Navbar = () => {
         </li>
 
         <li className={classes.navbar__item}>
-          <MyLink to="/problems/page/1" text="Problems" />
+          <MyLink
+            to="/problems/page/1"
+            text="Problems"
+            className={classes.navbar__link}
+          />
         </li>
       </div>
 
-      <li className={classes.navbar__item}>
-        <button
-          className={classes.navbar__logOutButton}
-          onClick={openConfirmLogoutModal}
-        >
-          Log out
-        </button>
-      </li>
+      <div className={classes.navbar__buttons}>
+        <li className={classes.navbar__item}>
+          <button className={classes.navbar__newProblemButton}>
+            New problem
+          </button>
+        </li>
+
+        <li className={classes.navbar__item}>
+          <button
+            className={classes.navbar__logOutButton}
+            onClick={openConfirmLogoutModal}
+          >
+            Log out
+          </button>
+        </li>
+      </div>
     </ul>
   );
 };

@@ -13,23 +13,27 @@ const PageNavigator = (props) => {
 
   return (
     <div className={allClasses}>
-      <button
-        className={classes.pageNavigator_button}
-        onClick={previousPageButtonClickHandler}
-      >
-        Previous page
-      </button>
+      {currentActivePage > minPage && (
+        <button
+          className={classes.pageNavigator_button}
+          onClick={previousPageButtonClickHandler}
+        >
+          Previous page
+        </button>
+      )}
 
       <div className={classes.pageNavigator__activePage}>
         {currentActivePage}
       </div>
 
-      <button
-        className={classes.pageNavigator_button}
-        onClick={nextPageButtonClickHandler}
-      >
-        Next page
-      </button>
+      {currentActivePage < maxPage && (
+        <button
+          className={classes.pageNavigator_button}
+          onClick={nextPageButtonClickHandler}
+        >
+          Next page
+        </button>
+      )}
     </div>
   );
 };

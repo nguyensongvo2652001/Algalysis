@@ -4,10 +4,82 @@
   padding: 1rem 2rem;
 }
 
+.tag--easy {
+  background-color: var(--success-color);
+}
+
+.tag--medium {
+  background-color: var(--secondary-color);
+}
+
 .tag--hard {
   background-color: var(--alert-color);
 }
 
-.tag--hashmap {
+.tag--bfs {
+  background-color: var(--primary-color);
+}
+
+.tag--backtracking {
   background-color: var(--secondary-color);
+}
+
+.tag--binarysearch {
+  background-color: var(--info-color);
+}
+
+.tag--bitmanipulation {
+  background-color: var(--error-color);
+}
+
+.tag--dfs {
+  background-color: var(--success-color);
+}
+
+.tag--divideandconquer {
+  background-color: var(--light-yellow-color);
+}
+
+.tag--dynamicprogramming {
+  background-color: var(--secondary-color);
+}
+
+.tag--greedy {
+  background-color: var(--dark-yellow-color);
+}
+
+.tag--hashmap {
+  background-color: var(--dark-yellow-color);
+}
+
+.tag--implementation {
+  background-color: var(--secondary-color);
+}
+
+.tag--linkedlist {
+  background-color: var(--info-color);
+}
+
+.tag--math {
+  background-color: var(--light-yellow-color);
+}
+
+.tag--mergesort {
+  background-color: var(--dark-yellow-color);
+}
+
+.tag--priorityqueue {
+  background-color: var(--dark-yellow-color);
+}
+
+.tag--slidingwindow {
+  background-color: var(--success-color);
+}
+
+.tag--sorting {
+  background-color: var(--dark-yellow-color);
+}
+
+.tag--trie {
+  background-color: var(--dark-yellow-color);
 }

@@ -45,6 +45,9 @@
 
 .problem__complexityContainer {
   width: var(--complexity-column-width);
+}
+
+.problem__complexityValue {
   font-family: "Merriweather", serif;
   font-style: italic;
 }
@@ -81,7 +84,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .problem__dateCreatedContainer {
     display: none;
   }

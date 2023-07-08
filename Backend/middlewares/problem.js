@@ -5,6 +5,7 @@ const ProblemAnalyzeResult = require("../models/analyzeResult");
 const Problem = require("../models/problem");
 
 const MAX_PROBLEM_TEXT_LENGTH = 550;
+const MAX_PROBLEM_NAME_LENGTH = 50;
 
 const prepareSearchProblemMiddleware = (req, res, next) => {
   const q = req.query?.q || "";
@@ -12,9 +13,11 @@ const prepareSearchProblemMiddleware = (req, res, next) => {
   const searchQuery = { $regex: q, $options: "i" };
 
   req.body = {
-    text: searchQuery,
+    $or: [{ text: searchQuery }, { name: searchQuery }],
     creator: req.user._id,
   };
+
+  req.query.sort = "-dateCreated";
 
   next();
 };
@@ -23,6 +26,10 @@ const setProblemRequestBodyBeforeCreateMiddleware = (req, res, next) => {
   req.body.dateCreated = Date.now();
   req.body.analyzeResult = undefined;
   req.body.creator = req.user._id; // The creator of the problem will be the current logged in user
+
+  if (!req.body.name) {
+    req.body.name = "Untitled problem";
+  }
 
   next();
 };
@@ -36,6 +43,17 @@ const validateProblemRequestBodyMiddleware = catchAsync(
       return next(
         new HandledError(
           `Problem can not be longer than ${MAX_PROBLEM_TEXT_LENGTH} characters`
+        )
+      );
+    }
+
+    if (
+      problemRequestBody.name &&
+      problemRequestBody.name.length > MAX_PROBLEM_NAME_LENGTH
+    ) {
+      return next(
+        new HandledError(
+          `Problem's name can not be longer than ${MAX_PROBLEM_NAME_LENGTH} characters`
         )
       );
     }
