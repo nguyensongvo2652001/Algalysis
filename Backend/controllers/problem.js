@@ -30,11 +30,18 @@ const analyzeProblem = catchAsync(async (req, res, next) => {
     );
   }
 
+  if (!problem.text || problem.text.length === 0) {
+    return next(new HandledError(`Problem text can not be empty`, 400));
+  }
+
   const analyzeProblemURL = `${process.env.MODEL_BACKEND_BASE_URL}/api/model/analyzeText`;
+
+  const textData = { text: problem.text };
+  const jsonBody = JSON.stringify(textData);
 
   const response = await fetch(analyzeProblemURL, {
     method: "POST",
-    body: JSON.stringify({ text: problem.text }),
+    body: jsonBody,
     headers: { "Content-Type": "application/json" },
   });
 
@@ -57,11 +64,13 @@ const analyzeProblem = catchAsync(async (req, res, next) => {
     tags: responseAnalyzeResult.tags,
     relatedProblems: responseAnalyzeResult["similar_problems"],
   };
+
   let analyzeResult = await ProblemAnalyzeResult.findOneAndUpdate(
     {
       problem: problem._id,
     },
-    analyzeResultData
+    analyzeResultData,
+    { new: true }
   );
 
   if (!analyzeResult) {

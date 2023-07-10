@@ -8,9 +8,9 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 NODEJS_BACKEND_BASE_URL = os.getenv("NODEJS_BACKEND_BASE_URL")
-print(NODEJS_BACKEND_BASE_URL)
 CORS(app, origins=NODEJS_BACKEND_BASE_URL, methods='*')
 
 
@@ -20,11 +20,11 @@ def hello():
 
 @app.route('/api/model/analyzeText/', methods=['POST'])
 def analyze_text_controller():
-    data = request.get_json()
-    text = data.get('text')
-    response = None
-    status_code = None 
     try:
+        data = request.get_json()
+        text = data.get('text')
+        response = None
+        status_code = None 
         analyze_result = analyze_text(text)
         response = {
             "status": "success", 
@@ -34,6 +34,7 @@ def analyze_text_controller():
         }
         status_code = 200 
     except Exception as error:
+        print(error)
         response = {
             "status": "fail",
             "message": str(error)

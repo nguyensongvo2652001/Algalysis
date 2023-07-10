@@ -37,9 +37,12 @@ const setProblemRequestBodyBeforeCreateMiddleware = (req, res, next) => {
 const validateProblemRequestBodyMiddleware = catchAsync(
   async (req, res, next) => {
     const problemRequestBody = req.body;
-    validateRequiredFields(problemRequestBody, ["creator", "text"]);
+    validateRequiredFields(problemRequestBody, ["creator"]);
 
-    if (problemRequestBody.text.length > MAX_PROBLEM_TEXT_LENGTH) {
+    if (
+      problemRequestBody.text &&
+      problemRequestBody.text.length > MAX_PROBLEM_TEXT_LENGTH
+    ) {
       return next(
         new HandledError(
           `Problem can not be longer than ${MAX_PROBLEM_TEXT_LENGTH} characters`

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 import useSendRequest from "../../hooks/useSendRequest";
 import useErrorHandling from "../../hooks/useErrorHandling";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../UI/Modal/Modal";
 import LoadingModal from "../UI/Modal/LoadingModal/LoadingModal";
 import { successAlert } from "../../utils/alert";
@@ -41,6 +41,7 @@ const EditProblem = () => {
 
         const { problem } = content.data;
         setProblem(problem);
+        setProblemAnaylyzeResult(problem.analyzeResult);
       } catch (err) {
         handleError(err);
       }
@@ -49,8 +50,7 @@ const EditProblem = () => {
     getProblem();
   }, [handleError, problemId, sendRequest]);
 
-  const saveButtonClickHandler = async () => {
-    setIsSaving(true);
+  const saveProblem = async () => {
     const updateProblemURL = `${process.env.REACT_APP_BACKEND_BASE_URL}/problem/${problemId}`;
     try {
       const data = {
@@ -71,6 +71,11 @@ const EditProblem = () => {
     } catch (err) {
       handleError(err);
     }
+  };
+
+  const saveButtonClickHandler = async () => {
+    setIsSaving(true);
+    await saveProblem();
 
     setIsSaving(false);
   };
@@ -79,6 +84,7 @@ const EditProblem = () => {
     const analyzeProblemURL = `${process.env.REACT_APP_BACKEND_BASE_URL}/problem/${problemId}/analyze`;
     setIsAnalyzing(true);
     try {
+      await saveProblem();
       const response = await sendRequest(analyzeProblemURL, {
         method: "POST",
       });
@@ -89,6 +95,7 @@ const EditProblem = () => {
       }
 
       const { analyzeResult } = content.data;
+
       setProblemAnaylyzeResult(analyzeResult);
     } catch (err) {
       handleError(err);
