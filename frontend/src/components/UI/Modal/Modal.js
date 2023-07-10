@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import Card from "../Card/Card";
@@ -21,7 +21,7 @@ const ModalOverlay = (props) => {
   );
 };
 
-const Modal = forwardRef((props, ref) => {
+const Modal = (props) => {
   const backdrop = ReactDOM.createPortal(
     <Backdrop
       onClick={props.backdropOnClick}
@@ -42,6 +42,6 @@ const Modal = forwardRef((props, ref) => {
       {modalOverlay}
     </>
   );
-});
+};
 
 export default Modal;

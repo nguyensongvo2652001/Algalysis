@@ -14,6 +14,7 @@ router
   .route("/problem")
   .get(
     currentUserMiddleware.prepareGetAllCreatedProblemMiddleware,
+    problemMiddleware.setProblemPopulateOptions,
     problemController.getAllWithConditionProblemController
   )
   .delete(
@@ -24,6 +25,7 @@ router
 router.get(
   "/problem/search",
   problemMiddleware.prepareSearchProblemMiddleware,
+  problemMiddleware.setProblemPopulateOptions,
   problemController.getAllWithConditionProblemController
 );
 

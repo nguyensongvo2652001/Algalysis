@@ -112,9 +112,34 @@ const validateIfUserIsAllowedToViewProblemMiddleware = catchAsync(
   }
 );
 
+const filterProblemRequestBodyBeforeUpdateMiddleware = (req, res, next) => {
+  const allowedFieldsToUpdate = ["name", "text"];
+  const filteredRequestBody = { ...req.body };
+  Object.keys(filteredRequestBody).map((key) => {
+    if (allowedFieldsToUpdate.includes(key)) return;
+    delete filteredRequestBody[key];
+  });
+
+  req.body = filteredRequestBody;
+
+  next();
+};
+
+const setProblemPopulateOptions = (req, res, next) => {
+  req.populateOptions = [
+    {
+      path: "analyzeResult",
+    },
+  ];
+
+  next();
+};
+
 module.exports = {
   setProblemRequestBodyBeforeCreateMiddleware,
   validateProblemRequestBodyMiddleware,
   validateIfUserIsAllowedToViewProblemMiddleware,
   prepareSearchProblemMiddleware,
+  setProblemPopulateOptions,
+  filterProblemRequestBodyBeforeUpdateMiddleware,
 };

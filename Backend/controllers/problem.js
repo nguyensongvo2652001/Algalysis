@@ -7,6 +7,7 @@ const {
   getOne,
   deleteOne,
   deleteAll,
+  updateOne,
 } = require("./crud");
 
 const createProblemController = createOne(Problem);
@@ -18,6 +19,8 @@ const getProblem = getOne(Problem);
 const deleteOneProblem = deleteOne(Problem);
 
 const deleteAllProblems = deleteAll(Problem);
+
+const updateProblem = updateOne(Problem);
 
 const analyzeProblem = catchAsync(async (req, res, next) => {
   const problem = await Problem.findById(req.params.id);
@@ -80,4 +83,5 @@ module.exports = {
   analyzeProblem,
   deleteOneProblem,
   deleteAllProblems,
+  updateProblem,
 };

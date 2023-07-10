@@ -20,8 +20,15 @@ router
 router
   .route("/:id")
   .all(problemMiddleware.validateIfUserIsAllowedToViewProblemMiddleware)
-  .get(problemController.getProblem)
-  .delete(problemController.deleteOneProblem);
+  .get(
+    problemMiddleware.setProblemPopulateOptions,
+    problemController.getProblem
+  )
+  .delete(problemController.deleteOneProblem)
+  .patch(
+    problemMiddleware.filterProblemRequestBodyBeforeUpdateMiddleware,
+    problemController.updateProblem
+  );
 
 router.post(
   "/:id/analyze",

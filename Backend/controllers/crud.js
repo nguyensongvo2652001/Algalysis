@@ -4,7 +4,13 @@ const { HandledError, catchAsync } = require("../utils/errorHandling");
 const getAllWithCondition = (Model) => {
   return catchAsync(async (req, res, next) => {
     const totalNumberOfDocs = await Model.countDocuments(req.body);
-    const query = Model.find(req.body);
+    let query = Model.find(req.body);
+
+    if (req.populateOptions) {
+      req.populateOptions.map((populateOption) => {
+        query = query.populate(populateOption);
+      });
+    }
 
     if (!req.query.limit) {
       req.query.limit = 10;

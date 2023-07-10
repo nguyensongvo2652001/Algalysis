@@ -3,8 +3,9 @@ import { capitalizeFirstLetter } from "../../../utils/string";
 
 const Tag = (props) => {
   const { value } = props;
+  const tagValue = value.split(" ").join("");
 
-  const allClasses = `${classes.tag} ${classes[`tag--${value}`]}`;
+  const allClasses = `${classes.tag} ${classes[`tag--${tagValue}`]}`;
 
   return (
     <div className={allClasses}>
