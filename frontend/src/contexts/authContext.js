@@ -4,7 +4,7 @@ import useSendRequest from "../hooks/useSendRequest";
 import useErrorHandling from "../hooks/useErrorHandling";
 
 const AuthContext = React.createContext({
-  currentUser: {},
+  currentUser: undefined,
   logout: async () => {},
   checkAuthentication: async () => {},
 });
@@ -42,7 +42,7 @@ export const AuthContextProvider = (props) => {
         throw new Error("something went wrong trying to logout");
       }
 
-      setCurrentUser({});
+      setCurrentUser(undefined);
       return true; // true means logout successfully
     } catch (err) {
       handleError(err);

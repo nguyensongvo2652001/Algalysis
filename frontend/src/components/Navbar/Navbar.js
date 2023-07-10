@@ -34,10 +34,6 @@ const Navbar = () => {
         successAlert(
           "Log out successfully ! We will redirect you to the login page soon !"
         );
-
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
       } else {
         throw new Error("something went wrong when we try to log you out");
       }
