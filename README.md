@@ -29,7 +29,7 @@ Below are some screenshots that I took from this project (you can check them in 
 1. Authentication (Login, Signup)
 2. Create / delete /update a problem
 3. Create / update / delete task
-4. **Analyzes the problem using machine learning models. These models will try to predict the complexity of the problem, the techniques that can be used to solve it, the difficulty of it (compared to other problems on Leetcode), and related problems on LeetCode (I use something called the Levenshtein distance to compare the user's input with the problems on Leetcode to choose the most similar problems)**
+4. **Analyzes the problem using machine learning models. These models will try to predict the complexity of the problem, the techniques that can be used to solve it, the difficulty of it (compared to other problems on Leetcode), and related problems on LeetCode (I use cosine similarity from Tensorflow to compare the user's input with the problems on Leetcode to choose the most similar problems)**
 
 ## PROJECT STRUCTURE
 
